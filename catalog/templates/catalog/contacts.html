@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Online Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Главная</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Каталог
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Товар 1</a></li>
+                <li><a class="dropdown-item" href="#">Товар 2</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Сопутствующие товары</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacts/">Контакты</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Поиск</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-7">
+                <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title">Контактная информация:</h3>
+                        <div class="row">
+                            <div class="col-4">Москва</div>
+                            <div class="col-4">ул.Советская, 1\2</div>
+                            <div class="col-4">+7 777 777 77 77</div>
+                            <div class="col-4">Санкт-Петербург</div>
+                            <div class="col-4">ул.Ленина, 1\2</div>
+                            <div class="col-4">+8 888 888 88 88</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                      <h3 class="card-title">Мы на карте</h3>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card" style="width: 18rem;">
+                                  <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                  <div class="card-body">
+                                    <h5 class="card-title">В Москве</h5>
+                                    <p class="card-text">От метро направо потом налево потом еще раз направо и налево</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card" style="width: 18rem;">
+                                  <!--<img src="..." class="card-img-top" alt="..."> -->
+                                  <div class="card-body">
+                                    <h5 class="card-title">В Санкт-Петербурге</h5>
+                                    <p class="card-text">От метро направо потом налево потом еще раз направо и налево</p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Оставьте заявку</h3>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                              <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Имя">
+                            </div>
+                            <div class="mb-3">
+                              <input type="email" name="email" class="form-control" id="email" placeholder="E-mail">
+                            </div>
+                            <div class="mb-3">
+                              <textarea class="form-control" name="message" id="message" rows="3" placeholder="Сообщение"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary form-control">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
