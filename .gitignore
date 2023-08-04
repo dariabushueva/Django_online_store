@@ -8,3 +8,5 @@ cover/
 .coverage
 .coverage.*
 .cache
+
+.env

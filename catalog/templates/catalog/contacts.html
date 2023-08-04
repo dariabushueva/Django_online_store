@@ -49,12 +49,16 @@
                     <div class="card-body">
                       <h3 class="card-title">Контактная информация:</h3>
                         <div class="row">
-                            <div class="col-4">Москва</div>
-                            <div class="col-4">ул.Советская, 1\2</div>
-                            <div class="col-4">+7 777 777 77 77</div>
-                            <div class="col-4">Санкт-Петербург</div>
-                            <div class="col-4">ул.Ленина, 1\2</div>
-                            <div class="col-4">+8 888 888 88 88</div>
+                            {% for contact in all_contacts %}
+                            <div class="col-6">
+                                <div class="card-body">
+                                    <h5>{{ contact.city }}</h5> <br>
+                                    {{ contact.phone }} <br>
+                                    {{ contact.address }} <br>
+                                    {{ contact.email }}
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
