@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from catalog.models import Product, Contacts
+from catalog.models import Product, Contacts, Category
 
 
 def index(request):
-    latest_products = Product.objects.order_by('-creation_date')[:5]
-    for product in latest_products:
-        print(f"Product: {product.name} - {product.price}")
 
-    return render(request, 'catalog/index.html')
+    content = {
+        'object_list': Product.objects.order_by('-creation_date')[:3],
+        'title': 'Последние поступления'
+    }
+    return render(request, 'catalog/index.html', content)
 
 
 def contacts(request):
@@ -18,6 +19,39 @@ def contacts(request):
         message = request.POST.get('message')
         print(f'{name} ({email}): {message}')
 
-    all_contacts = Contacts.objects.all()
-    return render(request, 'catalog/contacts.html', {'all_contacts': all_contacts})
+    content = {
+        'all_contacts': Contacts.objects.all(),
+        'title': f'Контактная информация:'
+    }
+    return render(request, 'catalog/contacts.html', content)
+
+
+def products(request, pk):
+
+    category_item = Category.objects.get(pk=pk)
+
+    content = {
+        'object_list': Product.objects.filter(category_id=pk),
+        'title': f'Товары из категории: {category_item.name}'
+    }
+    return render(request, 'catalog/products.html', content)
+
+
+def product(request, pk):
+
+    category_item = Product.objects.get(pk=pk)
+
+    content = {
+        'object': Product.objects.get(pk=pk),
+        'title': f'Товар из категории: {category_item.category}'
+    }
+    return render(request, 'catalog/product.html', content)
+
+
+def categories(request):
+    content = {
+        'object_list': Category.objects.all(),
+        'title': 'Категории товаров'
+    }
+    return render(request, 'catalog/categories.html', content)
 
