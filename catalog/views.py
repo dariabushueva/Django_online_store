@@ -5,8 +5,8 @@ from catalog.models import Product, Contacts, Category
 def index(request):
 
     content = {
-        'object_list': Product.objects.order_by('-creation_date')[:3],
-        'title': 'Последние поступления'
+        'object_list': Product.objects.order_by('-creation_date')[:6],
+        'title': 'Последние поступления:'
     }
     return render(request, 'catalog/index.html', content)
 
@@ -54,4 +54,30 @@ def categories(request):
         'title': 'Категории товаров'
     }
     return render(request, 'catalog/categories.html', content)
+
+
+def add_product(request):
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        message = request.POST.get('message')
+        image_preview = request.POST.get('image_preview')
+        price = request.POST.get('price')
+        id_category = request.POST.get('category')
+        image_preview.save()
+
+        category = Category.objects.get(pk=id_category)
+        Product.objects.create(
+            name=name,
+            description=message,
+            image_preview=image_preview,
+            category=category,
+            price=price
+        )
+
+    content = {
+        'title': f'Добавить новый продукт:',
+        'object_list': Category.objects.all()
+    }
+    return render(request, 'catalog/add_product.html', content)
 
