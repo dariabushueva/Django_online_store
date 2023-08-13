@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, FormView
+
+from catalog.forms import ContactForm
 from catalog.models import Product, Contacts, Category
 
 
@@ -64,17 +66,34 @@ class ProductCreateView(CreateView):
     }
 
 
-def contacts(request):
+#def contacts(request):
+#
+#    if request.method == 'POST':
+#        name = request.POST.get('name')
+#        email = request.POST.get('email')
+#        message = request.POST.get('message')
+#        print(f'{name} ({email}): {message}')
+#
+#    content = {
+#        'all_contacts': Contacts.objects.all(),
+#        'title': f'Контактная информация:'
+#    }
+#    return render(request, 'catalog/contacts.html', content)
 
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        print(f'{name} ({email}): {message}')
 
-    content = {
-        'all_contacts': Contacts.objects.all(),
+class ContactFormView(FormView):
+    form_class = ContactForm
+    template_name = 'catalog/contacts.html'
+    success_url = reverse_lazy('catalog:index')
+    extra_context = {
         'title': f'Контактная информация:'
     }
-    return render(request, 'catalog/contacts.html', content)
 
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['all_contacts'] = Contacts.objects.all()
+        return context_data
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return redirect('catalog:index')

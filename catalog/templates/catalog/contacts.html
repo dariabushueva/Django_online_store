@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="card" style="width: 18rem;">
-                                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                <img src="/media/contacts/msk.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">В Москве</h5>
                                     <p class="card-text">От метро направо потом налево потом еще раз направо и
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-6">
                             <div class="card" style="width: 18rem;">
-                                <!--<img src="..." class="card-img-top" alt="..."> -->
+                                <img src="/media/contacts/spb.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">В Санкт-Петербурге</h5>
                                     <p class="card-text">От метро направо потом налево потом еще раз направо и
@@ -57,17 +57,11 @@
                     <h3 class="card-title">Оставьте заявку</h3>
                     <form method="post">
                         {% csrf_token %}
-                        <div class="mb-3">
-                            <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
-                                   placeholder="Имя">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" name="email" class="form-control" id="email" placeholder="E-mail">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" name="message" id="message" rows="3"
-                                      placeholder="Сообщение"></textarea>
-                        </div>
+                        <div class="form-error">{{ form.not_field_errors }}</div>
+                        {% for f in form %}
+                        <p><label class="form" for="{{f.id_for_label}}">{{f.label}}:</label>{{ f }}</p>
+                        <div class="form-error">{{ f.errors }}</div>
+                        {% endfor %}
                         <button type="submit" class="btn btn-primary form-control">Отправить</button>
                     </form>
                 </div>
