@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
@@ -16,6 +17,7 @@ class ProductListView(ListView):
 
 
 class ProductsListView(ListView):
+    paginate_by = 2
     model = Product
     template_name = 'catalog/products_list.html'
 
