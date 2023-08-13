@@ -12,9 +12,9 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ object.title }}</h5>
                     <p class="card-text">{{ object.body | truncatechars:100 }}</p>
-                    <a href="{% url 'blog:view' object.pk %}" type="button" class="btn btn-outline-info">View</a>
-                    <a href="{% url 'blog:edit' object.pk %}" type="button" class="btn btn-outline-info">Edit</a>
-                    <a href="{% url 'blog:delete' object.pk %}" type="button" class="btn btn-outline-info">Delete</a>
+                    <a href="{% url 'blog:view' object.slug %}" type="button" class="btn btn-outline-info">View</a>
+                    <a href="{% url 'blog:edit' object.slug %}" type="button" class="btn btn-outline-info">Edit</a>
+                    <a href="{% url 'blog:delete' object.slug %}" type="button" class="btn btn-outline-info">Delete</a>
                 </div>
             </div>
         </div>

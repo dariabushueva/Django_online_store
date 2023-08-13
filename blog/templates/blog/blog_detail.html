@@ -11,13 +11,13 @@
         </div>
         <div class="col-4">
             <div class="card">
-                <h5 class="card-header">{{ object.title }} ({{ object.slug }})</h5>
+                <h5 class="card-header">{{ object.title }}</h5>
                 <div class="card-body">
                     <h6 class="card-text text-end">{{ object.creation_date }}</h6>
                     <p class="card-text">{{ object.body }}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{% url 'blog:edit' object.pk %}" type="button" class="btn btn-outline-info">Edit</a>
-                        <a href="{% url 'blog:delete' object.pk %}" type="button" class="btn btn-outline-info">Delete</a>
+                        <a href="{% url 'blog:edit' object.slug %}" type="button" class="btn btn-outline-info">Edit</a>
+                        <a href="{% url 'blog:delete' object.slug %}" type="button" class="btn btn-outline-info">Delete</a>
                     </div>
                     <div class="card-footer mt-3">Просмотры: {{ object.count_views }}</div>
                 </div>

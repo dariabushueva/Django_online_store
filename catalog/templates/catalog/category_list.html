@@ -8,7 +8,7 @@
             <div class="card" style="width: 25rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ object.name }}</h5>
-                    <p class="card-text">{{ object.description }}</p>
+                    <p class="card-text">{{ object.description | linebreaks }}</p>
                     <a href="{% url 'catalog:products' object.pk %}" type="button" class="btn btn-info btn-sm">к товарам</a>
                 </div>
             </div>

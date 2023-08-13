@@ -6,6 +6,7 @@ NULLABLE = {'blank': True, 'null': True}
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='наименование')
     description = models.TextField(verbose_name='описание')
+    slug = models.SlugField(max_length=100, verbose_name='slug', **NULLABLE)
 
     def __str__(self):
         return f'{self.name}'
@@ -23,6 +24,7 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='цена за покупку')
     creation_date = models.DateField(auto_now_add=True, verbose_name='дата создания')
     modification_date = models.DateField(auto_now=True, verbose_name='дата последнего изменения')
+    slug = models.SlugField(max_length=100, verbose_name='slug', **NULLABLE)
 
     def __str__(self):
         return f'{self.name} ({self.category})'

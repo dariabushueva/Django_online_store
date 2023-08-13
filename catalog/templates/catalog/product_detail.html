@@ -14,7 +14,7 @@
                 <h5 class="card-header">{{ object.price }} РУБ</h5>
                 <div class="card-body">
                     <h5 class="card-title">{{ object.name }}</h5>
-                    <p class="card-text">{{ object.description }}</p>
+                    <p class="card-text">{{ object.description | linebreaks }}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="#" type="button" class="btn btn-outline-info">в корзину</a>
                         <a href="#" type="button" class="btn btn-outline-info">в рассрочку</a>
