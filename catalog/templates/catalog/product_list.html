@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ object.name }}</h5>
                     <p class="card-text">{{ object.description | truncatechars:100 }}</p>
-                    <a href="{% url 'catalog:product' object.pk %}" type="button" class="btn btn-outline-info">к
+                    <a href="{% url 'catalog:product' object.slug %}" type="button" class="btn btn-outline-info">к
                         товару</a>
                 </div>
             </div>

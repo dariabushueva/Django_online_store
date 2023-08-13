@@ -21,12 +21,12 @@ class ProductsListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(category_id=self.kwargs.get('pk'))
+        queryset = queryset.filter(category__slug=self.kwargs.get('slug'))
         return queryset
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
-        category_item = Category.objects.get(pk=self.kwargs.get('pk'))
+        category_item = Category.objects.get(slug=self.kwargs.get('slug'))
         context_data['title'] = f'Товары из категории: {category_item.name}'
         return context_data
 
@@ -36,13 +36,13 @@ class ProductDetailView(DetailView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(pk=self.kwargs.get('pk'))
+        queryset = queryset.filter(slug=self.kwargs.get('slug'))
         return queryset
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
-        category_item = Product.objects.get(pk=self.kwargs.get('pk'))
-        context_data['title'] = f'Товары из категории: {category_item.category}'
+        category_item = Product.objects.get(slug=self.kwargs.get('slug'))
+        context_data['title'] = f'Товар из категории: {category_item.category}'
         return context_data
 
 
@@ -55,7 +55,7 @@ class CategoryListView(ListView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ('name', 'description', 'image_preview', 'price', 'category')
+    fields = ('name', 'slug', 'description', 'image_preview', 'price', 'category',)
     success_url = reverse_lazy('catalog:index')
     extra_context = {
         'title': 'Добавить новый продукт:'
