@@ -1,0 +1,130 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Видеокарты",
+      "description": "устройство, преобразующее графический образ, хранящийся как содержимое памяти компьютера (или самого адаптера), в форму, пригодную для дальнейшего вывода на экран монитора."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Материнские платы",
+      "description": "печатная плата, являющаяся основой построения модульного электронного устройства, например  компьютера"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "ЦПУ",
+      "description": " центральное обрабатывающее устройство, часто просто процессор  электронный блок либо интегральная схема, исполняющая машинные инструкции (код программ), главная часть аппаратного обеспечения компьютера или программируемого логического контроллера"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Palit NVIDIA GeForce RTX 2060SUPER",
+      "description": "NVIDIA GeForce RTX 2060SUPER, 1470 МГц (1650 МГц, в режиме Boost), 8192 МБ GDDR6, 14000 МГц",
+      "image_preview": "",
+      "category": 1,
+      "price": 25000,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Palit NVIDIA GeForce RTX 3060",
+      "description": "NVIDIA GeForce RTX 3060, 1320 МГц (1777 МГц, в режиме Boost); 12288 МБ GDDR6, 15000 МГц",
+      "image_preview": "",
+      "category": 1,
+      "price": 35000,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "GIGABYTE NVIDIA GeForce RTX 4060",
+      "description": "Видеокарта GIGABYTE NVIDIA GeForce RTX 4060 GV-N4060WF2OC-8GD 8ГБ Windforce, GDDR6, OC, Ret",
+      "image_preview": "",
+      "category": 1,
+      "price": 35000,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Intel Core i5 12400F, LGA 1700, OEM",
+      "description": "Процессор Intel Core i5 12400F, LGA 1700, OEM, Alder Lake;",
+      "image_preview": "",
+      "category": 3,
+      "price": 15000,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "AMD Ryzen 5 5600G, AM4, OEM",
+      "description": "Процессор AMD Ryzen 5 5600G, AM4, OEM [100-000000252], Cezanne",
+      "image_preview": "",
+      "category": 3,
+      "price": 12500,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "MSI A520M-A PRO",
+      "description": "Материнская плата MSI A520M-A PRO, SocketAM4, AMD A520, mATX, Ret",
+      "image_preview": "",
+      "category": 2,
+      "price": 6000,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "ASUS TUF GAMING B760M-PLUS",
+      "description": "Материнская плата ASUS TUF GAMING B760M-PLUS, LGA 1700, Intel B760, mATX, Ret",
+      "image_preview": "",
+      "category": 2,
+      "price": 25000,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "ASROCK H510M-HVS R2.0",
+      "description": "Материнская плата ASROCK H510M-HVS R2.0, LGA 1200, Intel H510, mATX, Ret",
+      "image_preview": "",
+      "category": 2,
+      "price": 5500,
+      "creation_date": "2023-08-03",
+      "modification_date": "2023-08-03"
+    }
+  }
+]

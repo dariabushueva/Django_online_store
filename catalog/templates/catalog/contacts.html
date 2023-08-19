@@ -1,0 +1,74 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+
+<div class="container">
+
+    {% include 'catalog/includes/inc_title.html' %}
+
+    <div class="row mt-5">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        {% for contact in all_contacts %}
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h5>{{ contact.city }}</h5> <br>
+                                {{ contact.phone }} <br>
+                                {{ contact.address }} <br>
+                                {{ contact.email }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h3 class="card-title">Мы на карте</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/media/contacts/msk.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">В Москве</h5>
+                                    <p class="card-text">От метро направо потом налево потом еще раз направо и
+                                        налево</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/media/contacts/spb.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">В Санкт-Петербурге</h5>
+                                    <p class="card-text">От метро направо потом налево потом еще раз направо и
+                                        налево</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Оставьте заявку</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-error">{{ form.not_field_errors }}</div>
+                        {% for f in form %}
+                        <p><label class="form" for="{{f.id_for_label}}">{{f.label}}:</label>{{ f }}</p>
+                        <div class="form-error">{{ f.errors }}</div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary form-control">Отправить</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

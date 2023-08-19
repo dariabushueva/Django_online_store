@@ -1,0 +1,48 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<div class="container">
+    {% include 'catalog/includes/inc_title.html' %}
+    <div class="row mt-3 row-cols-md-3 g-4">
+        {% for object in object_list %}
+        <div class="col-4">
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.name }}</h5>
+                    <p class="card-text">{{ object.description | truncatechars:100 }}</p>
+                    <a href="{% url 'catalog:product' object.slug %}" type="button" class="btn btn-info btn-sm">к
+                        товару</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row mt-3">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li class="page-item page-item disabled" aria-current="page">
+                <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}
