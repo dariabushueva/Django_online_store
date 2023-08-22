@@ -17,7 +17,8 @@
                     <p class="card-text">{{ object.description | linebreaks }}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="#" type="button" class="btn btn-outline-info">в корзину</a>
-                        <a href="#" type="button" class="btn btn-outline-info">в рассрочку</a>
+                        <a href="{% url 'catalog:product_edit' object.slug %}" type="button" class="btn btn-outline-info">изменить</a>
+                        <a href="{% url 'catalog:product_delete' object.slug %}" type="button" class="btn btn-outline-info">удалить</a>
                     </div>
                 </div>
             </div>

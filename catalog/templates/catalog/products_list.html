@@ -1,4 +1,5 @@
 {% extends 'catalog/base.html' %}
+{% load my_tags %}
 {% block content %}
 <div class="container">
     {% include 'catalog/includes/inc_title.html' %}
@@ -6,10 +7,11 @@
         {% for object in object_list %}
         <div class="col-4">
             <div class="card" style="width: 25rem;">
+                <img src="{{ object.image_preview | mediapath }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ object.name }}</h5>
                     <p class="card-text">{{ object.description | truncatechars:100 }}</p>
-                    <a href="{% url 'catalog:product' object.slug %}" type="button" class="btn btn-info btn-sm">к
+                    <a href="{% url 'catalog:product_detail' object.slug %}" type="button" class="btn btn-info btn-sm">к
                         товару</a>
                 </div>
             </div>

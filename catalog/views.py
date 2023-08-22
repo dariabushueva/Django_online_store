@@ -1,8 +1,8 @@
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, FormView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, DetailView, CreateView, FormView, UpdateView, DeleteView
 
-from catalog.forms import ContactForm
+from catalog.forms import ContactForm, ProductForm
 from catalog.models import Product, Contacts, Category
 
 
@@ -18,7 +18,7 @@ class ProductListView(ListView):
 
 
 class ProductsListView(ListView):
-    paginate_by = 2
+    paginate_by = 3
     model = Product
     template_name = 'catalog/products_list.html'
 
@@ -58,10 +58,30 @@ class CategoryListView(ListView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ('name', 'slug', 'description', 'image_preview', 'price', 'category',)
+    form_class = ProductForm
     success_url = reverse_lazy('catalog:index')
     extra_context = {
         'title': 'Добавить новый продукт:'
+    }
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:index')
+    extra_context = {
+        'title': 'Редактировать продукт:'
+    }
+
+    def get_success_url(self):
+        return reverse('catalog:product_detail', args=[self.kwargs.get('slug')])
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:index')
+    extra_context = {
+        'title': 'Удаление записи:'
     }
 
 

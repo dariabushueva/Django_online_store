@@ -1,4 +1,5 @@
 from django import forms
+from catalog.models import Product
 from captcha.fields import CaptchaField
 
 
@@ -13,3 +14,30 @@ class ContactForm(forms.Form):
     captcha = CaptchaField(label='')
 
 
+class ProductForm(forms.ModelForm):
+
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    BAN_LIST = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+    def clean_banned_words(self, data):
+        for item in self.BAN_LIST:
+            if item in data.lower():
+                raise forms.ValidationError('Ошибка! Вы используете запрещенные слова.')
+
+    def clean_name(self):
+        cleaned_data = self.cleaned_data.get('name')
+        self.clean_banned_words(cleaned_data)
+        return cleaned_data
+
+    def clean_description(self):
+        cleaned_data = self.cleaned_data.get('description')
+        self.clean_banned_words(cleaned_data)
+        return cleaned_data
