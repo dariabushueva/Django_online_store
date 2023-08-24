@@ -1,5 +1,5 @@
 from django import forms
-from catalog.models import Product
+from catalog.models import Product, Version
 from captcha.fields import CaptchaField
 
 
@@ -15,6 +15,7 @@ class ContactForm(forms.Form):
 
 
 class ProductForm(forms.ModelForm):
+    version = forms.ModelChoiceField(queryset=Version.objects.all(), empty_label=None, label='Версия продукта')
 
     class Meta:
         model = Product
@@ -41,3 +42,17 @@ class ProductForm(forms.ModelForm):
         cleaned_data = self.cleaned_data.get('description')
         self.clean_banned_words(cleaned_data)
         return cleaned_data
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+
+        # Получаем выбранную версию из данных формы
+        selected_version = self.cleaned_data.get('version')
+
+        # Связываем продукт с выбранной версией
+        instance.version = selected_version
+
+        if commit:
+            instance.save()
+
+        return instance

@@ -1,9 +1,11 @@
+from pprint import pprint
+
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, FormView, UpdateView, DeleteView
 
 from catalog.forms import ContactForm, ProductForm
-from catalog.models import Product, Contacts, Category
+from catalog.models import Product, Contacts, Category, Version
 
 
 class ProductListView(ListView):
@@ -15,6 +17,33 @@ class ProductListView(ListView):
     def get_queryset(self):
         queryset = Product.objects.order_by('-creation_date')[:6]
         return queryset
+
+  #  def get_context_data(self, *args, **kwargs):
+  #      context_data = super().get_context_data(*args, **kwargs)
+#
+  #      try:
+  #          version = Version.objects.get(is_active=True)
+  #          context_data['version'] = version.name
+  #      except Version.DoesNotExist:
+  #          context_data['version'] = None
+#
+  #      return context_data
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+    #    pprint(context_data)
+        for product in context_data['object_list']:
+            active_version = product.version_set.filter(is_active=False)
+            print(active_version)
+            if active_version:
+         #       context_data['active_version'] = active_version
+                product.active_version_number = active_version   # как здесь получить номер из ?
+         #       product.active_version_name = active_version   # как здесь получить имя?
+            else:
+                product.active_version_number = None
+                product.active_version_name = None
+#
+        return context_data   # надо ли предварительно расширять context_data на номер и имя версии?
 
 
 class ProductsListView(ListView):
