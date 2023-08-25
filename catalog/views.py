@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, FormView, UpdateView, DeleteView

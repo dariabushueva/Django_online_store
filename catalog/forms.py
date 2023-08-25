@@ -15,7 +15,7 @@ class ContactForm(forms.Form):
 
 
 class ProductForm(forms.ModelForm):
-    version = forms.ModelChoiceField(queryset=Version.objects.all(), empty_label=None, label='Версия продукта')
+    version = forms.ModelChoiceField(queryset=Version.objects.none(), label='Версия продукта', required=False)
 
     class Meta:
         model = Product
@@ -25,6 +25,9 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.product = self.instance
+        if self.product:
+            self.fields['version'].queryset = Version.objects.filter(product=self.product)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
@@ -43,16 +46,3 @@ class ProductForm(forms.ModelForm):
         self.clean_banned_words(cleaned_data)
         return cleaned_data
 
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-
-        # Получаем выбранную версию из данных формы
-        selected_version = self.cleaned_data.get('version')
-
-        # Связываем продукт с выбранной версией
-        instance.version = selected_version
-
-        if commit:
-            instance.save()
-
-        return instance
