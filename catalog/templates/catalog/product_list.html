@@ -18,7 +18,13 @@
                             товару</a>
                     </div>
                     <div class="card-footer">
-                        <h6>{{ active_version }}</h6>
+                        {% if object.active_version_name %}
+                        <p>Номер активной версии: {{ object.active_version_number }}<br>
+                            Название: {{ object.active_version_name }}</p>
+                        {% else  %}
+                        <p>Номер активной версии: _____ <br>
+                            Название: нет активной версии </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

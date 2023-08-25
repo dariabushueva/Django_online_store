@@ -11,8 +11,17 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ object.name }}</h5>
                     <p class="card-text">{{ object.description | truncatechars:100 }}</p>
-                    <a href="{% url 'catalog:product_detail' object.slug %}" type="button" class="btn btn-info btn-sm">к
+                    <a href="{% url 'catalog:product_detail' object.slug %}" type="button" class="btn btn-outline-info">к
                         товару</a>
+                </div>
+                <div class="card-footer">
+                    {% if object.active_version_name %}
+                    <p>Номер активной версии: {{ object.active_version_number }}<br>
+                        Название: {{ object.active_version_name }}</p>
+                    {% else %}
+                    <p>Номер активной версии: _____ <br>
+                        Название: нет активной версии </p>
+                    {% endif %}
                 </div>
             </div>
         </div>

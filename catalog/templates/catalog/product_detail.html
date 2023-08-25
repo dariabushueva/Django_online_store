@@ -21,6 +21,15 @@
                         <a href="{% url 'catalog:product_delete' object.slug %}" type="button" class="btn btn-outline-info">удалить</a>
                     </div>
                 </div>
+                <div class="card-footer">
+                        {% if active_version_name %}
+                        <p>Номер активной версии: {{ active_version_number }}<br>
+                            Название: {{ active_version_name }}</p>
+                        {% else  %}
+                        <p>Номер активной версии: _____ <br>
+                            Название: нет активной версии </p>
+                        {% endif %}
+                    </div>
             </div>
         </div>
     </div>

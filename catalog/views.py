@@ -18,32 +18,17 @@ class ProductListView(ListView):
         queryset = Product.objects.order_by('-creation_date')[:6]
         return queryset
 
-  #  def get_context_data(self, *args, **kwargs):
-  #      context_data = super().get_context_data(*args, **kwargs)
-#
-  #      try:
-  #          version = Version.objects.get(is_active=True)
-  #          context_data['version'] = version.name
-  #      except Version.DoesNotExist:
-  #          context_data['version'] = None
-#
-  #      return context_data
-
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
-    #    pprint(context_data)
         for product in context_data['object_list']:
-            active_version = product.version_set.filter(is_active=False)
-            print(active_version)
+            active_version = Version.objects.filter(product=product, is_active=True).last()
             if active_version:
-         #       context_data['active_version'] = active_version
-                product.active_version_number = active_version   # как здесь получить номер из ?
-         #       product.active_version_name = active_version   # как здесь получить имя?
+                product.active_version_number = active_version.number
+                product.active_version_name = active_version.name
             else:
                 product.active_version_number = None
                 product.active_version_name = None
-#
-        return context_data   # надо ли предварительно расширять context_data на номер и имя версии?
+        return context_data
 
 
 class ProductsListView(ListView):
@@ -60,6 +45,14 @@ class ProductsListView(ListView):
         context_data = super().get_context_data(*args, **kwargs)
         category_item = Category.objects.get(slug=self.kwargs.get('slug'))
         context_data['title'] = f'Товары из категории: {category_item.name}'
+        for product in context_data['object_list']:
+            active_version = Version.objects.filter(product=product, is_active=True).last()
+            if active_version:
+                product.active_version_number = active_version.number
+                product.active_version_name = active_version.name
+            else:
+                product.active_version_number = None
+                product.active_version_name = None
         return context_data
 
 
@@ -75,6 +68,15 @@ class ProductDetailView(DetailView):
         context_data = super().get_context_data(*args, **kwargs)
         category_item = Product.objects.get(slug=self.kwargs.get('slug'))
         context_data['title'] = f'Товар из категории: {category_item.category}'
+
+        active_version = Version.objects.filter(product=self.object, is_active=True).last()
+        if active_version:
+            context_data['active_version_number'] = active_version.number
+            context_data['active_version_name'] = active_version.name
+        else:
+            context_data['active_version_number'] = None
+            context_data['active_version_name'] = None
+
         return context_data
 
 
