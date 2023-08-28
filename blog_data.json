@@ -1,0 +1,54 @@
+[
+  {
+    "model": "blog.blog",
+    "pk": 9,
+    "fields": {
+      "title": "Новый тест",
+      "body": "Новый тест 2",
+      "image_preview": "media/тест.jpg",
+      "creation_date": "2023-08-09",
+      "is_published": true,
+      "count_views": 12,
+      "slug": "novyij-test"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 10,
+    "fields": {
+      "title": "Новая запись",
+      "body": "Описание новой записи по новому",
+      "image_preview": "media/11126686-1606476196.jpg",
+      "creation_date": "2023-08-09",
+      "is_published": true,
+      "count_views": 16,
+      "slug": "novaya-zapis"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 13,
+    "fields": {
+      "title": "Запись про пайтон",
+      "body": "Пайтон - язык программирования",
+      "image_preview": "media/з3кщл.jpeg",
+      "creation_date": "2023-08-09",
+      "is_published": true,
+      "count_views": 75,
+      "slug": "zapis-pro-pajton"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 14,
+    "fields": {
+      "title": "Новейший тест",
+      "body": "Новейший тест",
+      "image_preview": "media/22857331-1664400723_YZkNkmv.jpg",
+      "creation_date": "2023-08-12",
+      "is_published": true,
+      "count_views": 3,
+      "slug": "novejshij-test"
+    }
+  }
+]

@@ -14,7 +14,15 @@ class ContactForm(forms.Form):
     captcha = CaptchaField(label='')
 
 
-class ProductForm(forms.ModelForm):
+class StyleFormMixin:
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class ProductForm(StyleFormMixin, forms.ModelForm):
     version = forms.ModelChoiceField(queryset=Version.objects.none(), label='Версия продукта', required=False)
 
     class Meta:
@@ -28,8 +36,6 @@ class ProductForm(forms.ModelForm):
         self.product = self.instance
         if self.product:
             self.fields['version'].queryset = Version.objects.filter(product=self.product)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
 
     def clean_banned_words(self, data):
         for item in self.BAN_LIST:

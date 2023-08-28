@@ -4,7 +4,8 @@
     "pk": 1,
     "fields": {
       "name": "Видеокарты",
-      "description": "устройство, преобразующее графический образ, хранящийся как содержимое памяти компьютера (или самого адаптера), в форму, пригодную для дальнейшего вывода на экран монитора."
+      "description": "устройство, преобразующее графический образ, хранящийся как содержимое памяти компьютера (или самого адаптера), в форму, пригодную для дальнейшего вывода на экран монитора.",
+      "slug": "videokarty"
     }
   },
   {
@@ -12,7 +13,8 @@
     "pk": 2,
     "fields": {
       "name": "Материнские платы",
-      "description": "печатная плата, являющаяся основой построения модульного электронного устройства, например  компьютера"
+      "description": "печатная плата, являющаяся основой построения модульного электронного устройства, например  компьютера",
+      "slug": "materinskie-platy"
     }
   },
   {
@@ -20,7 +22,8 @@
     "pk": 3,
     "fields": {
       "name": "ЦПУ",
-      "description": " центральное обрабатывающее устройство, часто просто процессор  электронный блок либо интегральная схема, исполняющая машинные инструкции (код программ), главная часть аппаратного обеспечения компьютера или программируемого логического контроллера"
+      "description": "центральное обрабатывающее устройство, часто просто процессор  электронный блок либо интегральная схема, исполняющая машинные инструкции (код программ), главная часть аппаратного обеспечения компьютера или программируемого логического контроллера",
+      "slug": "cpu"
     }
   },
   {
@@ -28,12 +31,13 @@
     "pk": 1,
     "fields": {
       "name": "Palit NVIDIA GeForce RTX 2060SUPER",
-      "description": "NVIDIA GeForce RTX 2060SUPER, 1470 МГц (1650 МГц, в режиме Boost), 8192 МБ GDDR6, 14000 МГц",
-      "image_preview": "",
+      "description": "NVIDIA GeForce RTX 2060SUPER, 1470 МГц (1650 МГц, в режиме Boost), 8192 МБ GDDR6, 14000 МГц\r\n\r\nВидеочипсет: NVIDIA GeForce RTX 2060SUPER, 1470 МГц (1650 МГц, в режиме Boost);\r\nПамять: 8192 МБ GDDR6, 14000 МГц;\r\nИнтерфейс: PCI-E 3.0;\r\nТехпроцесс: 12 нм;\r\nРазъемы: Display Port х 1, HDMI х 1, DVI х 1,\r\nПитание: 8 pin, рекомендовано 550 Вт;\r\nОсобенности: поддержка DLSS;",
+      "image_preview": "media/Palit_NVIDIA_GeForce__RTX_2060SUPER.jpg",
       "category": 1,
       "price": 25000,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-12",
+      "slug": "palit-nvidia-geforce-rtx-2060super"
     }
   },
   {
@@ -41,12 +45,13 @@
     "pk": 2,
     "fields": {
       "name": "Palit NVIDIA GeForce RTX 3060",
-      "description": "NVIDIA GeForce RTX 3060, 1320 МГц (1777 МГц, в режиме Boost); 12288 МБ GDDR6, 15000 МГц",
-      "image_preview": "",
+      "description": "NVIDIA GeForce RTX 3060, 1320 МГц (1777 МГц, в режиме Boost); 12288 МБ GDDR6, 15000 МГц\r\nВидеочипсет: NVIDIA GeForce RTX 3060, 1320 МГц (1777 МГц, в режиме Boost);\r\nПамять: 8192 МБ GDDR6, 15000 МГц;\r\nИнтерфейс: PCI-E 4.0;\r\nТехпроцесс: 8 нм;\r\nРазъемы: Display Port х 3, HDMI х 1,\r\nПитание: 8 pin, рекомендовано 550 Вт;\r\nОсобенности: трассировка лучей; поддержка DLSS;",
+      "image_preview": "media/Palit_NVIDIA_GeForce_RTX_3060.jpg",
       "category": 1,
       "price": 35000,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-13",
+      "slug": "palit-nvidia-geforce-rtx-3060"
     }
   },
   {
@@ -54,12 +59,13 @@
     "pk": 3,
     "fields": {
       "name": "GIGABYTE NVIDIA GeForce RTX 4060",
-      "description": "Видеокарта GIGABYTE NVIDIA GeForce RTX 4060 GV-N4060WF2OC-8GD 8ГБ Windforce, GDDR6, OC, Ret",
-      "image_preview": "",
+      "description": "Видеокарта GIGABYTE NVIDIA GeForce RTX 4060 GV-N4060WF2OC-8GD 8ГБ Windforce, GDDR6, OC, Ret\r\n\r\nКомплектация\tRetail\r\nОбласть применения\tигровая\r\nТип памяти\tGDDR6\r\nЧастота памяти\t21000 МГц\r\nШина обмена с памятью\t128 бит\r\nЧастота видеопроцессора\t2550 МГц\r\nРазъемы и интерфейсы\tвыход DisplayPort x 2, выход HDMI x 2, интерфейс USB Type-C\r\nТехпроцесс\t5 нм\r\nТип подключения\tPCI Express 4.0\r\nПоддержка технологий\tподдержка CUDA\r\nРазъем дополнительного питания\t8 pin\r\nМаксимальное разрешение\t7680x4320\r\nКоличество поддерживаемых мониторов\t4",
+      "image_preview": "media/GIGABYTE_NVIDIA_GeForce_RTX_4060.jpg",
       "category": 1,
       "price": 35000,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-22",
+      "slug": "gigabyte-nvidia-geforce-rtx-4060"
     }
   },
   {
@@ -67,12 +73,13 @@
     "pk": 4,
     "fields": {
       "name": "Intel Core i5 12400F, LGA 1700, OEM",
-      "description": "Процессор Intel Core i5 12400F, LGA 1700, OEM, Alder Lake;",
-      "image_preview": "",
+      "description": "Процессор Intel Core i5 12400F, LGA 1700, OEM, Alder Lake;\r\nКоротко о товаре:\r\nСокет LGA1700\r\nКоличество ядер 6 x 2500-4400 МГц\r\nОбъем кэша L2/L3\t7.50 МБ/18 МБ\r\nОперативная память 2 x DDR4, DDR5 3200/4800 МГц\r\nТепловыделение 65 Вт\r\nТехпроцесс\t10 нм\r\nЯдро процессора Alder Lake-S\r\nНазначение\tигровой, настольный ПК, Процессор\r\nДата выхода\tQ1 2022",
+      "image_preview": "media/Intel_Core_i5_12400F_LGA_1700_OEM.jpg",
       "category": 3,
       "price": 15000,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-25",
+      "slug": "intel-core-i5-12400f-lga-1700-oem"
     }
   },
   {
@@ -80,12 +87,13 @@
     "pk": 5,
     "fields": {
       "name": "AMD Ryzen 5 5600G, AM4, OEM",
-      "description": "Процессор AMD Ryzen 5 5600G, AM4, OEM [100-000000252], Cezanne",
-      "image_preview": "",
+      "description": "Процессор AMD Ryzen 5 5600G, AM4, OEM [100-000000252], \r\nБренд\r\nAMD\r\nМодель\r\n5600G\r\nЯдро\r\nCezanne\r\nСокет\r\nAM4\r\nКоличествоядер\r\n6\r\nКоличествопотоков\r\n12\r\nЧастота\r\n3.9 ГГц и 4.4 в режиме Turbo\r\nL3 кэш\r\n16 МБ\r\nРазрядность вычислений\r\n64 bit\r\nМножитель\r\nразблокированный\r\nТехпроцесс\r\n7 нм\r\nТепловыделение\r\n65 Вт\r\nМаксимальная температура\r\n95 °С\r\nТип поставки\r\nOEM\r\nПоколение процессоров\r\nAMD Ryzen 5xxx\r\nГод релиза\r\n2021",
+      "image_preview": "media/AMD_Ryzen__5_5600G.jpg",
       "category": 3,
       "price": 12500,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-13",
+      "slug": "amd-ryzen-5-5600g-am4-oem"
     }
   },
   {
@@ -93,12 +101,13 @@
     "pk": 6,
     "fields": {
       "name": "MSI A520M-A PRO",
-      "description": "Материнская плата MSI A520M-A PRO, SocketAM4, AMD A520, mATX, Ret",
-      "image_preview": "",
+      "description": "Материнская плата MSI A520M-A PRO, SocketAM4, AMD A520, mATX, Ret\r\nКод производителя: A520M-A PRO\r\nГарантия: 36 мес.\r\nХарактеристики\r\nТип разъема процессора (socket):AM4 \r\nЧипсет:AMD A520 \r\nТип памяти:DDR4 \r\nКол-во слотов памяти:2 \r\nКол-во PCI Express:2 \r\nЗвук:8-канальный (7.1) \r\nПолное описание и характеристики",
+      "image_preview": "media/MSI_A520M-A_PRO.jpg",
       "category": 2,
       "price": 6000,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-13",
+      "slug": "msi-a520m-a-pro"
     }
   },
   {
@@ -106,12 +115,13 @@
     "pk": 7,
     "fields": {
       "name": "ASUS TUF GAMING B760M-PLUS",
-      "description": "Материнская плата ASUS TUF GAMING B760M-PLUS, LGA 1700, Intel B760, mATX, Ret",
-      "image_preview": "",
+      "description": "Материнская плата ASUS TUF GAMING B760M-PLUS, LGA 1700, Intel B760, mATX, Ret\r\nФорм-фактор: mATX;\r\nСокет: LGA 1700; чипсет: Intel B760;\r\nПамять: DDR4 - 4слота, частотой до 3200 МГц;\r\nСлоты: PCI-E 4.0 x16 х 1, PCI-E 4.0 x1 х 1,\r\nРазъемы: M.2 х 2, SATA3 х 4, Display Port х 1, HDMI х 1,\r\nСеть: 2.5Gigabit;",
+      "image_preview": "media/ASUS_TUF_GAMING_B760M-PLUS.jpg",
       "category": 2,
       "price": 25000,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-13",
+      "slug": "asus-tuf-gaming-b760m-plus"
     }
   },
   {
@@ -119,12 +129,191 @@
     "pk": 8,
     "fields": {
       "name": "ASROCK H510M-HVS R2.0",
-      "description": "Материнская плата ASROCK H510M-HVS R2.0, LGA 1200, Intel H510, mATX, Ret",
-      "image_preview": "",
+      "description": "Материнская плата ASROCK H510M-HVS R2.0, LGA 1200, Intel H510, mATX, Ret\r\nКоротко о товаре\r\nФорм-фактор\t\r\nmicroATX\r\nСокет\t\r\nLGA1200\r\nЧипсет\t\r\nIntel H510\r\nТип памяти\t\r\nDDR4 DIMM\r\nКоличество слотов памяти\t\r\n2\r\nМаксимальная частота памяти\t\r\n3200 МГц\r\nПоддержка PCI Express\t\r\n3.0, 4.0\r\nБеспроводные интерфейсы\t\r\nбез Wi-Fi\r\nРазъемы на задней панели\t\r\nHDMI, PS/2 (клавиатура/мышь), VGA\r\nЗвуковая схема\t\r\n7.1",
+      "image_preview": "media/ASROCK_H510M-HVS_R2.0.jpg",
       "category": 2,
       "price": 5500,
-      "creation_date": "2023-08-03",
-      "modification_date": "2023-08-03"
+      "creation_date": "2023-08-04",
+      "modification_date": "2023-08-13",
+      "slug": "asrock-h510m-hvs-r20"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 19,
+    "fields": {
+      "name": "Видеокарта Sapphire RX 6600 Gaming Pulse",
+      "description": "хоршоая красная карта",
+      "image_preview": "media/AMD_6600.jpg",
+      "category": 1,
+      "price": 30000,
+      "creation_date": "2023-08-08",
+      "modification_date": "2023-08-13",
+      "slug": "videokarta-sapphire-rx-6600-gaming-pulse"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 20,
+    "fields": {
+      "name": "Видеокарта XFX Radeon RX 6700 XT 12 ГБ (RX-67XT10GDB)",
+      "description": "Объем видеопамяти\t12288 МБ\r\nТип памяти\tGDDR6\r\nЧастота памяти\t16000 МГц\r\nШина обмена с памятью\t192 бит\r\nЧастота видеопроцессора\t2330 МГц\r\nТип подключения\tPCI Express 4.0\r\nРазъем дополнительного питания\t8 pin + 8 pin\r\nМаксимальное разрешение\t7680x4320\r\nКоличество поддерживаемых мониторов\t4",
+      "image_preview": "media/orig.webp",
+      "category": 1,
+      "price": 35000,
+      "creation_date": "2023-08-13",
+      "modification_date": "2023-08-13",
+      "slug": "videokarta-xfx-radeon-rx-6700-xt-12-gb-rx-67xt10gdb"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 21,
+    "fields": {
+      "name": "Видеокарта AMD Radeon RX 5700xt 8 Gb",
+      "description": "Новая видеокарта AMD Radeon RX 5700 XT на основе передовой архитектуры RDNA обеспечивает исключительную производительность и высокую точность изображения в играх. \r\n\r\nВозьми управление на себя при помощи Radeon RX 5700 XT и наслаждайся мощной, динамичной игрой, настроенной под тебя. \r\nОтличительными особенностями AMD Radeon RX 5700 XT является повышение показателя IPC (количества выполняемых за такт команд)",
+      "image_preview": "media/orig_1.webp",
+      "category": 1,
+      "price": 25000,
+      "creation_date": "2023-08-13",
+      "modification_date": "2023-08-25",
+      "slug": "videokarta-amd-radeon-rx-5700xt-8-gb"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 22,
+    "fields": {
+      "name": "Видеокарта MSI Radeon RX 6650 XT GAMING X 8G, Retail",
+      "description": "Комплектация\tRetail\r\nОсобенности\tнеобходимость дополнительного питания\r\nОбъем видеопамяти\t8192 МБ\r\nТип памяти\tGDDR6\r\nЧастота памяти\t17500 МГц\r\nШина обмена с памятью\t128 бит\r\nЧастота видеопроцессора\t2694 МГц\r\nРазъемы и интерфейсы\tвыход DisplayPort x 3, выход HDMI\r\nТехпроцесс\t7 нм\r\nТип подключения\tPCI Express 4.0\r\nTDP\t175 Вт\r\nПоддержка технологий\tподдержка HDCP, поддержка Vulkan\r\nРазъем дополнительного питания\t8 pin\r\nМаксимальное разрешение\t7680x4320\r\nКоличество поддерживаемых мониторов\t4",
+      "image_preview": "media/orig_2.webp",
+      "category": 1,
+      "price": 41000,
+      "creation_date": "2023-08-13",
+      "modification_date": "2023-08-13",
+      "slug": "videokarta-msi-radeon-rx-6650-xt-gaming-x-8g-retail"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 23,
+    "fields": {
+      "name": "Видеокарта ASUS GeForce RTX 3060 Ti 1680Mhz PCI-E 4.0 8192Mb 19000Mhz 256 bit 3xDP HDMI DUAL-RTX3060",
+      "description": "Объем видеопамяти\t8192 МБ\r\nТип памяти GDDR6\r\nЧастота памяти\t19000 МГц\r\nШина обмена с памятью\t256 бит\r\nЧастота видеопроцессора\t1680 МГц\r\nРазъемы и интерфейсы\tвыход DisplayPort, выход HDMI\r\nТип подключения\tPCI Express 4.0",
+      "image_preview": "media/orig_3.webp",
+      "category": 1,
+      "price": 60300,
+      "creation_date": "2023-08-13",
+      "modification_date": "2023-08-25",
+      "slug": "videokarta-asus-geforce-rtx-3060-ti-1680mhz-pci-e-40-8192mb-19000mhz-256-bit-3xdp-hdmi-dual-rtx3060"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 24,
+    "fields": {
+      "name": "Видеокарта Colorful I-Game GeForce RTX 4060 8GB , Ultra W, OC, трёхкулерная",
+      "description": "Область применения\tигровая\r\nОбъем видеопамяти\t8156 МБ\r\nТип памяти\tGDDR6\r\nЧастота памяти\t17000 МГц\r\nШина обмена с памятью\t128 бит\r\nРазъемы и интерфейсы\t выход DisplayPort, выход HDMI\r\nТехпроцесс\t5 нм\r\nТип подключения\tPCI Express 4.0\r\nПоддержка технологий\tподдержка Ansel, поддержка Broadcast, поддержка CUDA, поддержка Freestyle, поддержка G-Sync, NVIDIA 3-way SLI, NVIDIA CineFX, NVIDIA Dynamic Super Resolution (DSR), NVIDIA G-Sync HDR, NVIDIA Game Ready, NVIDIA MFAA\r\nРазъем дополнительного питания\t8 pin\r\nМаксимальное разрешение\t7680x4320\r\nКоличество поддерживаемых мониторов\t4",
+      "image_preview": "media/orig_4.webp",
+      "category": 1,
+      "price": 43000,
+      "creation_date": "2023-08-13",
+      "modification_date": "2023-08-13",
+      "slug": "videokarta-colorful-i-game-geforce-rtx-4060-8gb-ultra-w-oc-tryohkulernaya"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 25,
+    "fields": {
+      "name": "Процессор Intel Pentium G7400, LGA 1700, OEM",
+      "description": "Ядро: Alder Lake;\r\nЧастота: 3.7 ГГц;\r\nСокет: LGA 1700;\r\nЧисло ядер: 2, потоков 4;\r\nТепловыделение: 46 Вт;\r\nТехпроцесс: 10 нм;",
+      "image_preview": "media/img_0_1158_67_1_1.jpg",
+      "category": 3,
+      "price": 8500,
+      "creation_date": "2023-08-22",
+      "modification_date": "2023-08-25",
+      "slug": "prcessor-intel-pentium-g7400-lga-1700-oem"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 6,
+    "fields": {
+      "product": 25,
+      "number": "001",
+      "name": "Версия 001 (G 7400)",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 7,
+    "fields": {
+      "product": 22,
+      "number": "001",
+      "name": "Версия 001 (RX 6650)",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 8,
+    "fields": {
+      "product": 22,
+      "number": "002",
+      "name": "Версия 002 (RX6650)",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 9,
+    "fields": {
+      "product": 21,
+      "number": "001",
+      "name": "Версия 001 (RX 5700)",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 10,
+    "fields": {
+      "product": 21,
+      "number": "002",
+      "name": "Версия 002 (RX 5700)",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 11,
+    "fields": {
+      "product": 21,
+      "number": "003",
+      "name": "Версия 003 (RX 5700)",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.contacts",
+    "pk": 1,
+    "fields": {
+      "city": "Москва",
+      "address": "ул.Советская, 1\\2",
+      "phone": "+7 777 777 77 77",
+      "email": "moskva_online_store@gmail.com"
+    }
+  },
+  {
+    "model": "catalog.contacts",
+    "pk": 2,
+    "fields": {
+      "city": "Санкт-Петербург",
+      "address": "ул.Ленина, 1\\2",
+      "phone": "+8 888 888 88 88",
+      "email": "spb_online_store@gmail.com"
     }
   }
 ]
