@@ -10,7 +10,8 @@
                 <img src="{{ object.image_preview | mediapath }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ object.name }}</h5>
-                    <p class="card-text">{{ object.description | truncatechars:100 }}</p>
+                    <p class="card-text">{{ object.description | truncatechars:100 }}</p><br>
+                    <p class="card-text">{{ object.owner | default:'-' }}</p>
                     <a href="{% url 'catalog:product_detail' object.slug %}" type="button" class="btn btn-outline-info">к
                         товару</a>
                 </div>
