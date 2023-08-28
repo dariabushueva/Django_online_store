@@ -1,4 +1,5 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordResetForm
+from django import forms
 from django.utils.crypto import get_random_string
 
 from catalog.forms import StyleFormMixin
@@ -28,3 +29,6 @@ class UserForm(StyleFormMixin, UserChangeForm):
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
+
+            self.fields['password'].widget = forms.HiddenInput()
+

@@ -1,3 +1,6 @@
+import string
+import random
+
 from django.conf import settings
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth.views import LogoutView as BaseLogoutView
@@ -54,4 +57,17 @@ def verify_email(request, key):
     user.save()
     return redirect('users:login')
 
-    
+
+def generate_and_send_password(request):
+    new_password = ''.join(random.sample(string.ascii_letters, 20))
+    send_mail(
+        subject='Новый пароль',
+        message=f'Ваш новый пароль: {new_password}',
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[request.user.email],
+    )
+    request.user.set_password(new_password)
+    request.user.save()
+
+    return redirect(reverse('users:login'))
+
