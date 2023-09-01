@@ -18,11 +18,12 @@
                     <p class="card-text">{{ object.owner | default:'-' }}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="#" type="button" class="btn btn-outline-info">в корзину</a>
-                        {% if user.is_authenticated %}
+                        {% if perms.catalog.change_product or object.owner == user %}
                         <a href="{% url 'catalog:product_edit' object.slug %}" type="button" class="btn btn-outline-info">изменить</a>
+                        {% endif %}
+                        {% if perms.catalog.delete_product %}
                         <a href="{% url 'catalog:product_delete' object.slug %}" type="button" class="btn btn-outline-info">удалить</a>
                         {% endif %}
-
                     </div>
                 </div>
                 <div class="card-footer">

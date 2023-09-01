@@ -19,11 +19,15 @@ class StyleFormMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+            if field_name != 'is_published':
+                field.widget.attrs['class'] = 'form-control'
 
 
 class ProductForm(StyleFormMixin, forms.ModelForm):
     version = forms.ModelChoiceField(queryset=Version.objects.none(), label='Версия продукта', required=False)
+    is_published = forms.BooleanField(label='Опубликовано',
+                                      required=False,
+                                      widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
 
     class Meta:
         model = Product

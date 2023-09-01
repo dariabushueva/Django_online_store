@@ -12,11 +12,12 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'price', 'category', 'slug')
+    list_display = ('pk', 'name', 'price', 'category', 'slug', 'is_published')
     list_display_links = ('pk', 'name')
     list_filter = ('category',)
     search_fields = ('name', 'description')
     prepopulated_fields = {'slug': ('name',)}
+    list_editable = ('is_published',)
 
 
 @admin.register(Version)

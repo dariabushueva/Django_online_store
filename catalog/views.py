@@ -1,4 +1,5 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import Http404
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, FormView, UpdateView, DeleteView
@@ -15,6 +16,7 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         queryset = Product.objects.order_by('-creation_date')[:6]
+    #    queryset = Product.objects.filter(is_published=True, owner=self.request.user)
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -86,7 +88,7 @@ class CategoryListView(ListView):
     }
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:index')
@@ -101,24 +103,32 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:index')
     extra_context = {
         'title': 'Редактировать продукт:'
     }
+    permission_required = 'catalog.change_product'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.object.owner != self.request.user and not self.request.user.is_staff:
+            raise Http404
+        return self.object
 
     def get_success_url(self):
         return reverse('catalog:product_detail', args=[self.kwargs.get('slug')])
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:index')
     extra_context = {
         'title': 'Удаление записи:'
     }
+    permission_required = 'catalog.delete_product'
 
 
 class ContactFormView(FormView):

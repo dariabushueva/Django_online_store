@@ -2,6 +2,8 @@ import string
 import random
 
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth.views import LogoutView as BaseLogoutView
 from django.core.mail import send_mail
@@ -21,7 +23,7 @@ class LogoutView(BaseLogoutView):
     pass
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     success_url = reverse_lazy('users:profile')
     form_class = UserForm
@@ -58,6 +60,7 @@ def verify_email(request, key):
     return redirect('users:login')
 
 
+@login_required
 def generate_and_send_password(request):
     new_password = ''.join(random.sample(string.ascii_letters, 20))
     send_mail(
