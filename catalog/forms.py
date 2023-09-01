@@ -36,10 +36,13 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
     BAN_LIST = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         self.product = self.instance
         if self.product:
             self.fields['version'].queryset = Version.objects.filter(product=self.product)
+        if not user.has_perm('catalog.set_published'):
+            self.fields['is_published'].widget.attrs['disabled'] = 'disabled'
 
     def clean_banned_words(self, data):
         for item in self.BAN_LIST:

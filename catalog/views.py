@@ -15,8 +15,10 @@ class ProductListView(ListView):
     }
 
     def get_queryset(self):
-        queryset = Product.objects.order_by('-creation_date')[:6]
-    #    queryset = Product.objects.filter(is_published=True, owner=self.request.user)
+        if self.request.user.is_staff:
+            queryset = Product.objects.order_by('-creation_date')[:6]
+        else:
+            queryset = Product.objects.filter(is_published=True)
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -39,7 +41,10 @@ class ProductsListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(category__slug=self.kwargs.get('slug'))
+        if self.request.user.is_staff:
+            queryset = queryset.filter(category__slug=self.kwargs.get('slug'))
+        else:
+            queryset = Product.objects.filter(is_published=True, category__slug=self.kwargs.get('slug'))
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -96,6 +101,11 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         'title': 'Добавить новый продукт:'
     }
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def form_valid(self, form):
         self.object = form.save()
         self.object.owner = self.request.user
@@ -111,6 +121,11 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         'title': 'Редактировать продукт:'
     }
     permission_required = 'catalog.change_product'
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
