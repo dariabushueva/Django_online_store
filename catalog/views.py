@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
@@ -18,7 +19,7 @@ class ProductListView(ListView):
         if self.request.user.is_staff:
             queryset = Product.objects.order_by('-creation_date')[:6]
         else:
-            queryset = Product.objects.filter(is_published=True)
+            queryset = Product.objects.filter(Q(is_published=True) | Q(owner=self.request.user))
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -44,7 +45,8 @@ class ProductsListView(ListView):
         if self.request.user.is_staff:
             queryset = queryset.filter(category__slug=self.kwargs.get('slug'))
         else:
-            queryset = Product.objects.filter(is_published=True, category__slug=self.kwargs.get('slug'))
+            queryset = Product.objects.filter(Q(is_published=True, category__slug=self.kwargs.get('slug')) |
+                                              Q(owner=self.request.user, category__slug=self.kwargs.get('slug')))
         return queryset
 
     def get_context_data(self, *args, **kwargs):
