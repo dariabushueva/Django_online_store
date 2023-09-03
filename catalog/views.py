@@ -97,13 +97,14 @@ class ProductDetailView(DetailView):
 
 class CategoryListView(ListView):
     model = Category
-    template_name = 'catalog/category_list.html'
     extra_context = {
         'title': 'Категории товаров'
     }
 
-    def get_queryset(self):
-        return get_cached_categories()
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data()
+        context_data['cached_categories'] = get_cached_categories()
+        return context_data
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
