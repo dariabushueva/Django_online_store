@@ -13,6 +13,7 @@ from django.views.generic import CreateView, UpdateView
 
 from users.forms import UserRegisterForm, UserForm
 from users.models import User
+from users.services import send_verification_email
 
 
 class LoginView(BaseLoginView):
@@ -43,12 +44,7 @@ class RegisterView(CreateView):
         verification_key = self.object.verification_key
         verification_url = self.request.build_absolute_uri(reverse("users:verify_email",
                                                                    kwargs={"key": verification_key}))
-        send_mail(
-            subject='Подтверждение регистрации',
-            message=f'Для завершения регистрации, пожалуйста, перейдите по ссылке: {verification_url}',
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[self.object.email],
-        )
+        send_verification_email(self.object.email, verification_url)
         return redirect(self.success_url)
 
 

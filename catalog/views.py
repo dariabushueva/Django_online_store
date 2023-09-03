@@ -7,6 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, FormView, Upd
 
 from catalog.forms import ContactForm, ProductForm
 from catalog.models import Product, Contacts, Category, Version
+from catalog.services import get_cached_categories
 
 
 class ProductListView(ListView):
@@ -19,7 +20,10 @@ class ProductListView(ListView):
         if self.request.user.is_staff:
             queryset = Product.objects.order_by('-creation_date')[:6]
         else:
-            queryset = Product.objects.filter(Q(is_published=True) | Q(owner=self.request.user))
+            if self.request.user.is_authenticated:
+                queryset = Product.objects.filter(Q(is_published=True) | Q(owner=self.request.user))
+            else:
+                queryset = Product.objects.filter(is_published=True)
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -45,8 +49,11 @@ class ProductsListView(ListView):
         if self.request.user.is_staff:
             queryset = queryset.filter(category__slug=self.kwargs.get('slug'))
         else:
-            queryset = Product.objects.filter(Q(is_published=True, category__slug=self.kwargs.get('slug')) |
-                                              Q(owner=self.request.user, category__slug=self.kwargs.get('slug')))
+            if self.request.user.is_authenticated:
+                queryset = Product.objects.filter(Q(is_published=True, category__slug=self.kwargs.get('slug')) |
+                                                  Q(owner=self.request.user, category__slug=self.kwargs.get('slug')))
+            else:
+                queryset = Product.objects.filter(is_published=True, category__slug=self.kwargs.get('slug'))
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -90,9 +97,13 @@ class ProductDetailView(DetailView):
 
 class CategoryListView(ListView):
     model = Category
+    template_name = 'catalog/category_list.html'
     extra_context = {
         'title': 'Категории товаров'
     }
+
+    def get_queryset(self):
+        return get_cached_categories()
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
